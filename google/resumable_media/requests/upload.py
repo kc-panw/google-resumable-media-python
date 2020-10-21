@@ -17,7 +17,7 @@
 Also supported here are simple (media) uploads and multipart
 uploads that contain both metadata and a small file as payload.
 """
-
+from memory_profiler import profile
 
 from google.resumable_media import _upload
 from google.resumable_media.requests import _request_helpers
@@ -101,6 +101,7 @@ class MultipartUpload(_request_helpers.RequestsMixin, _upload.MultipartUpload):
         upload_url (str): The URL where the content will be uploaded.
     """
 
+    @profile
     def transmit(
         self,
         transport,
